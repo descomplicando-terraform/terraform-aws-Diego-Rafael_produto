@@ -1,10 +1,10 @@
 module "vpc" {
-  source         = "../terraform-aws-Diego-Rafael_groundwork/vpc"
+  source         = "github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork/vpc"
   vpc_cidr_block = "192.168.3.0/24"
 }
 
 module "ec2" {
-  source                = "../terraform-aws-Diego-Rafael_groundwork/ec2"
+  source                = "github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork/ec2"
   subnets_map           = module.vpc.subnets_map
   vpc_terraform         = module.vpc.vpc_terraform
   instance_name_prefix  = "docker"
