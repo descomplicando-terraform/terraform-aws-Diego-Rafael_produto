@@ -6,6 +6,8 @@ on:
       - main      # Executa para o ambiente "prod" em pull requests para a branch main
       - dev   # Executa para o ambiente "dev" em pull requests para a branch develop
 
+
+      
 jobs:
   terraform:
     name: Run Terraform Plan
