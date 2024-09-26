@@ -1,5 +1,5 @@
 module "groundwork" {
-  source                = "../terraform-aws-Diego-Rafael_groundwork"
+  source                = "github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork"
   vpc_cidr_block        = "192.168.3.0/24"
   subnets_map           = module.groundwork.subnets_map
   instance_name_prefix  = "docker"
