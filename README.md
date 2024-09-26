@@ -13,8 +13,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ec2"></a> [ec2](#module\_ec2) | github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork/ec2 | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork/vpc | n/a |
+| <a name="module_groundwork"></a> [groundwork](#module\_groundwork) | ../terraform-aws-Diego-Rafael_groundwork | n/a |
 
 ## Resources
 
