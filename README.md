@@ -1,8 +1,8 @@
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
 ## Providers
@@ -13,7 +13,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_groundwork"></a> [groundwork](#module\_groundwork) | ../terraform-aws-Diego-Rafael_groundwork | n/a |
+| <a name="module_groundwork"></a> [groundwork](#module\_groundwork) | github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork | n/a |
 
 ## Resources
 
@@ -26,4 +26,3 @@ No inputs.
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->
