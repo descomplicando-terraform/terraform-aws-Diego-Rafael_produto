@@ -33,4 +33,5 @@ jobs:
         run: terraform init  # Executa terraform init na raiz do projeto
 
       - name: Terraform Plan
+        id: plan
         run: terraform plan  # Executa terraform plan na raiz do projeto
