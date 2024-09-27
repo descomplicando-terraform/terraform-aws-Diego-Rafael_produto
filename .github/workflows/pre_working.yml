@@ -19,7 +19,6 @@ jobs:
 
   terraform-docs:
     runs-on: ubuntu-latest
-    needs: tfsec
     steps:
       - name: Baixando o código
         uses: actions/checkout@v4

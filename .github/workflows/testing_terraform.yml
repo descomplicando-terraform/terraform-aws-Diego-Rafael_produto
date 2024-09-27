@@ -1,14 +1,14 @@
 name: Terraform Test
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    
+
     # Configura o ambiente dinamicamente, dependendo da branch
     environment:
         name: ${{ github.event.pull_request.base.ref == 'main' && 'prod' || 'dev' }}
