@@ -1,0 +1,45 @@
+name: Terraform Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  # As credenciais da AWS devem ser armazenadas como secrets no GitHub
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}  
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do repositório
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Configuração do Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.3.0
+
+      # Passo 1: terraform init
+      - name: Terraform Init
+        run: terraform init
+
+      # Passo 2: terraform plan
+      - name: Terraform Plan
+        run: terraform plan -var="aws_region=${{ env.AWS_REGION }}" -out=tfplan
+
+      # Passo 3: terraform apply
+      - name: Terraform Apply
+        run: terraform apply -input=false tfplan
+        continue-on-error: true
+
+      # Passo 4: terraform destroy
+      - name: Terraform Destroy
+        if: always()
+        run: terraform destroy -auto-approve -var="aws_region=${{ env.AWS_REGION }}"
