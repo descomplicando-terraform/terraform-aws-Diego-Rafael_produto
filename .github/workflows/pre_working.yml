@@ -36,12 +36,18 @@ jobs:
       - name: Gerar documentação do Terraform
         run: terraform-docs markdown . > README.md  # Executa na raiz do repositório
 
+      - name: Verificar se README.md foi modificado
+        id: check_diff
+        run: |
+          git diff --exit-code README.md || echo "README.md foi modificado."
+
       - name: Configurar Git
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "${{ secrets.GIT_EMAIL }}"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ vars.GIT_EMAIL }}"
 
       - name: Fazer commit das alterações no README.md
+        if: steps.check_diff.outcome == 'success'  # Verifica se o README.md foi modificado
         run: |
           git add README.md
           git commit -m "Atualizando a documentação do Terraform"
