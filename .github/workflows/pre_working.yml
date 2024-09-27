@@ -25,10 +25,10 @@ jobs:
 
       - name: Instalar terraform-docs
         run: |
-          curl -sLo /usr/local/bin/terraform-docs https://github.com/terraform-docs/terraform-docs/releases/download/v0.19.0/terraform-docs-linux-amd64
-          chmod +x /usr/local/bin/terraform-docs
-          file /usr/local/bin/terraform-docs  # Verifica o tipo do arquivo
-          head /usr/local/bin/terraform-docs  # Mostra as primeiras linhas do arquivo
+          curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.19.0/terraform-docs-v0.19.0-$(uname)-amd64.tar.gz
+          tar -xzf terraform-docs.tar.gz
+          chmod +x terraform-docs
+          mv terraform-docs /usr/local/bin/terraform-docs
 
       - name: Verificar instalação do terraform-docs
         run: terraform-docs --version
