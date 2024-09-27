@@ -5,15 +5,17 @@ on:
     branches:
       - main
 
-env:
-  # As credenciais da AWS devem ser armazenadas como secrets no GitHub
-  AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_REGION: ${{ vars.AWS_REGION }}  
-
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    
+    # Configura o ambiente dinamicamente, dependendo da branch
+    environment:
+        name: ${{ github.event.pull_request.base.ref == 'main' && 'prod' || 'dev' }}
+    env:
+      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}     # Busca as credenciais do GitHub
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ vars.AWS_REGION }}  # Se estiver definido
 
     steps:
       # Checkout do repositório
@@ -24,7 +26,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.9.5
+          terraform_version: 1.9.5  # Altere para a versão que você está usando
 
       # Passo 1: terraform init
       - name: Terraform Init
