@@ -27,6 +27,8 @@ jobs:
         run: |
           curl -sLo /usr/local/bin/terraform-docs https://github.com/terraform-docs/terraform-docs/releases/latest/download/terraform-docs-linux-amd64
           chmod +x /usr/local/bin/terraform-docs
+          # Verificar se o download foi bem-sucedido
+          file /usr/local/bin/terraform-docs  # Verifica o tipo do arquivo
 
       - name: Verificar instalação do terraform-docs
         run: terraform-docs --version
