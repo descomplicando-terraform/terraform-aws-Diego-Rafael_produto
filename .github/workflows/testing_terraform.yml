@@ -32,7 +32,7 @@ jobs:
 
       # Passo 2: terraform plan
       - name: Terraform Plan
-        run: terraform plan -var="aws_region=${{ env.AWS_REGION }}" -out=tfplan
+        run: terraform plan -out=tfplan
 
       # Passo 3: terraform apply
       - name: Terraform Apply
@@ -42,4 +42,4 @@ jobs:
       # Passo 4: terraform destroy
       - name: Terraform Destroy
         if: always()
-        run: terraform destroy -auto-approve -var="aws_region=${{ env.AWS_REGION }}"
+        run: terraform destroy -auto-approve
