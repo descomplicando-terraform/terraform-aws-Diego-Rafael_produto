@@ -39,7 +39,10 @@ jobs:
       - name: Verificar se README.md foi modificado
         id: check_diff
         run: |
-          git diff --exit-code README.md || echo "README.md foi modificado."
+          git diff --exit-code README.md
+          if [ $? -eq 1 ]; then
+            echo "README.md foi modificado."
+          fi
 
       - name: Configurar Git
         run: |
