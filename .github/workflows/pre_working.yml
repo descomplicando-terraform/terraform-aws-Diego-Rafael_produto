@@ -26,16 +26,19 @@ jobs:
 
       - name: Instalar terraform-docs
         run: |
-          sudo curl -sLo /usr/local/bin/terraform-docs https://github.com/terraform-docs/terraform-docs/releases/latest/download/terraform-docs-linux-amd64
-          sudo chmod +x /usr/local/bin/terraform-docs
+          curl -sLo /usr/local/bin/terraform-docs https://github.com/terraform-docs/terraform-docs/releases/latest/download/terraform-docs-linux-amd64
+          chmod +x /usr/local/bin/terraform-docs
+
+      - name: Verificar instalação do terraform-docs
+        run: terraform-docs --version
 
       - name: Gerar documentação do Terraform
-        run: terraform-docs markdown ../../ > ../../README.md
+        run: terraform-docs markdown . > README.md  # Executa na raiz do repositório
 
       - name: Configurar Git
         run: |
           git config --global user.name "GitHub Actions"
-          git config --global user.email "${{ secrets.GIT_EMAIL }}"  # Usando a variável do GitHub
+          git config --global user.email "${{ secrets.GIT_EMAIL }}"
 
       - name: Fazer commit das alterações no README.md
         run: |
@@ -43,4 +46,4 @@ jobs:
           git commit -m "Atualizando a documentação do Terraform"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Utiliza o token do GitHub para autenticação
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
