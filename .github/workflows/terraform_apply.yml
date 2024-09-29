@@ -2,10 +2,6 @@ name: Terraform Apply
 
 on:
   workflow_dispatch:  # Permite execução manual
-  workflow_run:
-    workflows: ["Terraform Plan"]  # Dependência do workflow de plan
-    types:
-      - completed
 
 jobs:
   apply:
