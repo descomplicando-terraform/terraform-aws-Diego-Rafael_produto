@@ -1,0 +1,31 @@
+name: Terraform Destroy
+
+on:
+  workflow_dispatch:  # Permite execução manual
+  workflow_run:
+    workflows: ["Terraform Plan"]  # Dependência do workflow de plan
+    types:
+      - completed
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    
+    env:
+      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.9.5
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve  # Executa destroy
