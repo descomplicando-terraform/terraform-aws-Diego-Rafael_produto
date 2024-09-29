@@ -11,4 +11,5 @@ module "groundwork" {
       volume_size_docker = 10
     }
   ]
+  create_private_subnets = true
 }
