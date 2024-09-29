@@ -25,4 +25,7 @@ No inputs.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_private_ips"></a> [private\_ips](#output\_private\_ips) | IPs Privados das instâncias Docker |
+| <a name="output_public_ips"></a> [public\_ips](#output\_public\_ips) | IPs Públicos das instâncias Docker |
