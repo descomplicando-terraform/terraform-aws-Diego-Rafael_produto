@@ -13,7 +13,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_groundwork"></a> [groundwork](#module\_groundwork) | github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork | n/a |
+| <a name="module_groundwork"></a> [groundwork](#module\_groundwork) | github.com/descomplicando-terraform/terraform-aws-Diego-Rafael_groundwork | v1.0.0 |
 
 ## Resources
 
